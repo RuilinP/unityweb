@@ -1,107 +1,135 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Ruilin's homepage v0.2</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Ruilin's homepage v0.2</div>
-      </div>
-    </div>
-    <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
+<html>
+<head>
+	<title>Portfolio website</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/RWEbGL.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/RWEbGL.data.unityweb",
-        frameworkUrl: buildUrl + "/RWEbGL.framework.js.unityweb",
-        codeUrl: buildUrl + "/RWEbGL.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Ruilin City Official",
-        productName: "Ruilin's homepage v0.2",
-        productVersion: "1.0",
-        showBanner: unityShowBanner,
-      };
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+</head>
+<body>
+	<!----hero Section start---->
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
-      } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-      loadingBar.style.display = "block";
+	<div class="hero">
+		<nav>
+			<h2 class="logo">Ruilin<span>P</span></h2>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#about"><span>About me</span></a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#contact-me"><span>Contact me</span></a></li>
+			</ul>
+			<a href="#" class="btn">Linkedin</a>
+		</nav>
 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
-    </script>
-  </body>
+		<div class="content">
+			<h4>Hello, my name is</h4>
+			<h1>Ruilin <span>Peng</span></h1>
+			<h3><span>I'am a nobody.<span></h3>
+			<!-- <div class="newslatter">
+				<form>
+					<input type="email" name="email" id="mail" placeholder="Enter Your Email">
+					<input type="submit" name="submit" value="Lets Start">
+				</form>
+			</div> -->
+		</div>
+	</div>
+
+	<!----About section start---->
+	<section class="about" id="about">
+		<div class="main">
+			<img src="arch.png">
+			<div class="about-text">
+				<h2>About Me</h2>
+				<h5><span1>M</span1><span3>L</span3><span2>H</span2>er &<span> ArchLinux User</span></h5>
+				<p>I am a Cognitive Science(Computational cognitive stream) major \land Computer Science minor \land Statistical Science minor Undergraduate student at University
+					of Toronto.</p>
+				<button type="button">Let's Talk</button>
+			</div>
+		</div>
+	</section>
+
+    <!-----skill section start----------->
+	<div class="service" id="skills">
+		<div class="title">
+			<h2>My skills</h2>
+		</div>
+
+		<div class="box">
+			<div class="card">
+				
+				<a href="#"><img alt="Qries" src="python.png"
+					height="85">
+				<h5>Python</h5>
+				<div class="pra">
+					<p>Every website should be built with two primary goals: Firstly, it needs to work across all devices. Secondly, it needs to be fast as possible.</p>
+
+					<p style="text-align: center;">
+						<a class="button" href="#">Read More</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="card">
+				<a href="#"><img alt="Qries" src="https://www.clipartmax.com/png/middle/240-2409409_c-programming-icon-c-programming-language-icon.png"
+					height="85">
+				<h5>C</h5>
+				<div class="pra">
+					<p>Every website should be built with two primary goals: Firstly, it needs to work across all devices. Secondly, it needs to be fast as possible.</p>
+
+					<p style="text-align: center;">
+						<a class="button" href="#">Read More</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="card">
+				<a href="#"><img alt="Qries" src="R.png"
+					height="85">
+				<h5>Latex</h5>
+				<div class="pra">
+					<p>Every website should be built with two primary goals: Firstly, it needs to work across all devices. Secondly, it needs to be fast as possible.</p>
+
+					<p style="text-align: center;">
+						<a class="button" href="#">Read More</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="card">
+				<!-- <a href="#"><img alt="Qries" src="R.png"
+					height="85"> -->
+				<h5>And more to come</h5>
+				<div class="pra">
+					<p>Coming soon</p>
+
+					<p style="text-align: center;">
+						<a class="button" href="#">Read More</a>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!------Contact Me------>
+	<div class="contact-me" id="contact me">
+		
+		
+	</div>
+
+	<!------footer start--------->
+	<footer>
+		
+		<div class="social">
+			<a href="#"><i class="fab fa-facebook-f"></i></a>
+			<a href="#"><i class="fab fa-instagram"></i></a>
+			<a href="#"><i class="fab fa-dribbble"></i></a>
+		</div>
+		
+	</footer>
+</body>
 </html>
